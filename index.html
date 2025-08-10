@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sol, Nuvem e Chuva</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #e0f7fa; margin: 0; }
+        h1 { color: #0277bd; margin-top: 20px; }
+        p { font-size: 18px; max-width: 600px; margin: auto; color: #004d40; }
+        .btn { font-size: 50px; margin: 20px; padding: 20px; cursor: pointer; border: none; border-radius: 15px; background: #ffffff; transition: 0.3s; }
+        .btn:hover { transform: scale(1.1); background: #b2ebf2; }
+        #resultado { font-size: 22px; margin-top: 20px; font-weight: bold; color: #00695c; }
+    </style>
+</head>
+<body>
+
+<h1>☀️ Sol, ☁️ Nuvem e 🌧️ Chuva</h1>
+<p>Regras do jogo:<br>☀️ Sol evapora 🌧️ Chuva<br>🌧️ Chuva derruba ☁️ Nuvem<br>☁️ Nuvem esconde ☀️ Sol</p>
+
+<!-- Botões para o jogador escolher -->
+<button class="btn" onclick="jogar('sol')">☀️</button>
+<button class="btn" onclick="jogar('nuvem')">☁️</button>
+<button class="btn" onclick="jogar('chuva')">🌧️</button>
+
+<p id="resultado"></p>
+
+<script>
+function jogar(escolhaDoJogador) {
+    // 1️⃣ Lista de opções e escolha aleatória do computador
+    const opcoes = ['sol', 'nuvem', 'chuva'];
+    const escolhaDoComputador = opcoes[Math.floor(Math.random() * 3)];
+
+    // 2️⃣ Variável para guardar a mensagem final
+    let mensagemFinal;
+
+    // 3️⃣ Se jogador e computador escolherem igual → Empate
+    if (escolhaDoJogador === escolhaDoComputador) {
+        mensagemFinal = `Empate! Ambos escolheram ${escolhaDoJogador}.`;
+    }
+    // 4️⃣ Se o jogador escolher uma opção que vence do computador
+    else if (
+        (escolhaDoJogador === 'sol' && escolhaDoComputador === 'chuva') ||
+        (escolhaDoJogador === 'chuva' && escolhaDoComputador === 'nuvem') ||
+        (escolhaDoJogador === 'nuvem' && escolhaDoComputador === 'sol')
+    ) {
+        mensagemFinal = `Você venceu! ${escolhaDoJogador} ganha de ${escolhaDoComputador}.`;
+    }
+    // 5️⃣ Se não for empate nem vitória → jogador perdeu
+    else {
+        mensagemFinal = `Você perdeu! ${escolhaDoComputador} ganha de ${escolhaDoJogador}.`;
+    }
+
+    // Exibe o resultado na tela
+    document.getElementById('resultado').innerText = mensagemFinal;
+}
+</script>
+
+</body>
+</html>

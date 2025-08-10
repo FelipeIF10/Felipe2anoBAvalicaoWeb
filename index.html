@@ -17,7 +17,7 @@
 <h1>☀️ Sol, ☁️ Nuvem e 🌧️ Chuva</h1>
 <p>Regras do jogo:<br>☀️ Sol evapora 🌧️ Chuva<br>🌧️ Chuva derruba ☁️ Nuvem<br>☁️ Nuvem esconde ☀️ Sol</p>
 
-<!-- Botões para o jogador escolher -->
+
 <button class="btn" onclick="jogar('sol')">☀️</button>
 <button class="btn" onclick="jogar('nuvem')">☁️</button>
 <button class="btn" onclick="jogar('chuva')">🌧️</button>
@@ -26,18 +26,18 @@
 
 <script>
 function jogar(escolhaDoJogador) {
-    // 1️⃣ Lista de opções e escolha aleatória do computador
+    
     const opcoes = ['sol', 'nuvem', 'chuva'];
     const escolhaDoComputador = opcoes[Math.floor(Math.random() * 3)];
 
-    // 2️⃣ Variável para guardar a mensagem final
+    
     let mensagemFinal;
 
-    // 3️⃣ Se jogador e computador escolherem igual → Empate
+    
     if (escolhaDoJogador === escolhaDoComputador) {
         mensagemFinal = `Empate! Ambos escolheram ${escolhaDoJogador}.`;
     }
-    // 4️⃣ Se o jogador escolher uma opção que vence do computador
+    
     else if (
         (escolhaDoJogador === 'sol' && escolhaDoComputador === 'chuva') ||
         (escolhaDoJogador === 'chuva' && escolhaDoComputador === 'nuvem') ||
@@ -45,12 +45,12 @@ function jogar(escolhaDoJogador) {
     ) {
         mensagemFinal = `Você venceu! ${escolhaDoJogador} ganha de ${escolhaDoComputador}.`;
     }
-    // 5️⃣ Se não for empate nem vitória → jogador perdeu
+    
     else {
         mensagemFinal = `Você perdeu! ${escolhaDoComputador} ganha de ${escolhaDoJogador}.`;
     }
 
-    // Exibe o resultado na tela
+   
     document.getElementById('resultado').innerText = mensagemFinal;
 }
 </script>
